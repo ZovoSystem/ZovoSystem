@@ -34,6 +34,6 @@ export class CaixaServices {
   }
 
   mandarImprimir(venda: any) {
-    return this.http.post(`https://localhost:7082/api/Venda/imprimir`, venda)
+    return this.http.post('https://localhost:7082/api/Venda/imprimir', venda)
   }
 }
