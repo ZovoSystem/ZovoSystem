@@ -1,0 +1,189 @@
+<main>
+    <section>
+        <div class="buys">
+            <div class="pesq">
+                <label for="">Pesquisar Produto</label>
+                <input class="cod" type="text" placeholder="Código do Produto . . ." #inputSeachProducts
+                    [(ngModel)]="termoPesquisa" (input)="pesquisarItens()" (keydown)="controleSetinhas($event)"
+                    (keydown.tab)="codigoBarras()">
+
+                <ul class="dropdown" *ngIf="itensDropDown.length > 0">
+                    <li class="li-dropdown">
+                        <span class="l1">Código produto</span>
+                        <span class="l3">Código Barras</span>
+                        <span class="l2">Nome</span>
+                        <span class="l3">Valor</span>
+                    </li>
+                    <li *ngFor="let item of itensDropDown; let i = index" [class.ativo]="i === indexAtivo" (click)="selecionarItem(item, i)" class="li-dropdown">
+                        <span class="l1">{{item.codigoProduto}}</span>
+                        <span class="l3">{{item.codigoBarras}}</span>
+                        <span class="l2">{{item.nome}}</span>
+                        <span class="l3">R$ {{ item.valorVenda| number:'1.2-2':'pt-BR' }}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="father">
+                <h2>Items da Compra</h2>
+                <div class="list-itens-buy">
+                    <div class="scroll-area">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Código Produto</th>
+                                    <th>Código de Barras</th>
+                                    <th>Descrição</th>
+                                    <th>Preço</th>
+                                    <th>Quantidade</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of itensVenda; let i = index" #itemVenda tabindex="0"
+                                    [class.excluir]="i === linhaFoco"
+                                    (keydown)="controleSetinhasItensVendaExcluir($event, i)">
+                                    <td>{{ i + 1 }}</td>
+                                    <td>{{ item.codigoProduto }}</td>
+                                    <td>{{ item.codigoBarras }}</td>
+                                    <td>{{ item.nome }}</td>
+                                    <td>R$ {{ item.valorVenda| number:'1.2-2':'pt-BR' }}</td>
+                                    <td #qtd contenteditable="true" [innerText]="item.quantidade"
+                                        (blur)="atualizarQuantidade(item, $event)"
+                                        (keydown.enter)="atualizarQuantidade(item, $event, true)"
+                                        (keydown)="controleSetinhasItensVenda($event, i)">
+                                    </td>
+                                    <td>R$ {{ (item.valorVenda * item.quantidade) | number:'1.2-2':'pt-BR' }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="resum">
+            <div class="d-resum">
+                <h3>Resumo</h3>
+                <div>
+                    <p>Subtotal:</p>
+                    <p>R$ {{ resumoVenda.subtotal| number:'1.2-2':'pt-BR' }}</p>
+                </div>
+                <div>
+                    <p>Descontos:</p>
+                    <p>R$ 0,00</p>
+                </div>
+                <hr>
+                <div>
+                    <h2>Total:</h2>
+                    <h2>R$ {{ resumoVenda.total| number:'1.2-2':'pt-BR' }}</h2>
+                </div>
+            </div>
+            <div class="d-action">
+                <button class="green">F1 - Finalizar Venda</button>
+                <button class="red">F2 - Cancelar Venda</button>
+            </div>
+        </div>
+        <div class="b-inferior">
+            <button>F3 - Alterar Quantidade</button>
+            <button>F4 - Cancelar Item</button>
+            <button>F5 - Pesquisar</button>
+            <button>F11 - Tela Cheia</button>
+        </div>
+
+        <!-- Modal 1 -->
+        <div class="overlay" *ngIf="modalAberto === 1">
+            <div class="modal modal-finalizar-venda">
+                <h2>Forma de Pagamento</h2>
+                <p>Selecione e a forma de pagamento a venda?</p>
+                <div>
+                    <button>1 - Dinheiro</button>
+                    <button>2 - Pix</button>
+                    <button>3 - Cartão de Crédito</button>
+                    <button>4 - Cartão de Débito</button>
+                    <button>5 - Misto</button>
+                </div>
+                <button class="button-esc">Esc - Voltar</button>
+            </div>
+        </div>
+        <!-- Modal 2 -->
+        <div class="overlay" *ngIf="modalAberto === 2">
+            <div class="modal modal-cancelar">
+                <h2>Cancelamento</h2>
+                <p>Realmente deseja cancelar a venda?</p>
+                <div>
+                    <button>F1 - Confirmar</button>
+                    <button>Esc - Voltar</button>
+                </div>
+            </div>
+        </div>
+        <!-- Modal 3 -->
+        <div class="overlay" *ngIf="modalAberto === 3">
+            <div class="modal modal-confirmar">
+                <h2>Pagamento em Dinheiro</h2>
+                <p>Digite o valor a ser pago em Dinheiro.</p>
+                <div>
+                    <input #inputValor type="text" [(ngModel)]="valorPago">
+                </div>
+                <div>
+                    <button>F1 - Confirmar</button>
+                    <button>Esc - Voltar</button>
+                </div>
+            </div>
+        </div>
+        <div class="overlay" *ngIf="modalAberto === 4">
+            <div class="modal modal-confirmar">
+                <h2>Confirmação de Venda</h2>
+
+                <div>
+                    <p>Valor Total <span>R$ {{ resumoVenda.total | number:'1.2-2':'pt-BR' }}</span></p>
+                    <p>Descontos <span>R$ {{ resumoVenda.desconto | number:'1.2-2':'pt-BR' }}</span></p>
+                </div>
+                <div class="formas-pagamento">
+                    <h3>Pagamento</h3>
+                    <div *ngFor="let pagamento of resumoVenda.pagamentos">
+                        <p>{{ pagamento.forma }} <span>R$ {{ pagamento.valor | number:'1.2-2':'pt-BR' }}</span></p>
+                    </div>
+                </div>
+                <div *ngIf="resumoVenda.troco > 0">
+                    <p>Troco <span>R$ {{ resumoVenda.troco | number:'1.2-2':'pt-BR' }}</span></p>
+                </div>
+                <div>
+                    <button>F1 - Confirmar</button>
+                    <button>F2 - Confirmar + Imprimir Recibo</button>
+                    <button>Esc - Voltar</button>
+                </div>
+            </div>
+        </div>
+        <div class="overlay" *ngIf="modalAberto === 5">
+            <div class="modal modal-confirmar">
+                <h2>Pagamento Misto</h2>
+                <p>Escolha a forma de pagamento número {{ this.resumoVenda.pagamentos.length + 1 }}.</p>
+                <div>
+                    <p>Valor faltante <span>R$ 60,00</span></p>
+                </div>
+                <div>
+                    <button>1 - Dinheiro</button>
+                    <button>2 - Pix</button>
+                    <button>3 - Cartão de Crédito</button>
+                    <button>4 - Cartão de Débito</button>
+                </div>
+                <button class="button-esc">Esc - Voltar</button>
+            </div>
+        </div>
+        <div class="overlay" *ngIf="modalAberto === 6">
+            <div class="modal modal-confirmar">
+                <h2>Pagamento Misto</h2>
+                <p>Digite o valor a ser pago em {{ this.resumoVenda.pagamentos[this.resumoVenda.pagamentos.length - 1].forma }}.</p>
+                <div>
+                    <p>Valor faltante <span>R$ {{ valorFaltante() | number:'1.2-2':'pt-BR' }}</span></p>
+                </div>
+                <div>
+                    <input type="text">
+                </div>
+                <div>
+                    <button>F1 - Confirmar</button>
+                    <button>Esc - Voltar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

@@ -1,0 +1,158 @@
+section {
+    color: #F5F5F5;
+}
+
+p {
+    font-size: 0.8rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e1e1e;
+    padding: 20px
+}
+
+.btn {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    color: #F5F5F5;
+}
+
+.contain-seach {
+    display: flex;
+    width: 500px;
+    height: 40px;
+    background-color: #3C3C3C;
+    border-radius: 6px;
+    overflow: hidden;
+    color: #F5F5F5;;
+}
+
+input[type="text"] {
+    width: 100%;
+    height: 40px;
+    border: none;
+    background-color: transparent;
+    padding: 0 10px;
+    color: #F5F5F5;
+}
+
+.contain-seach > button {
+    padding: 0 10px;
+    color: #F5F5F5;
+    background-color: transparent;
+    border: none;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.search-filter {
+    display: flex;
+    width: fit-content;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-new {
+    background-color: #28a745;
+    padding: 0 20px;
+    border-radius: 6px;
+}
+
+.contain-table {
+    width: 100%;
+    max-height: calc(100vh - 160px);
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    overflow: auto;
+}
+
+thead {
+    position: sticky;
+    background-color: #1e1e1e;
+    top: 0;
+    z-index: 1;
+}
+
+th {
+    padding: 20px;
+}
+
+td {
+    padding: 10px 20px;
+    border-bottom: 1px solid #888888;
+}
+
+td > span {
+    display: block;
+    color: #fff;
+    font-weight: 500;
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    border-radius: 1000px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.s1 {
+    background-color: green;
+}
+
+.s2 {
+    background-color: orange;
+}
+
+.s3 {
+    background-color: red;
+}
+
+.actions {
+    gap: 5px;
+}
+
+.actions > button {
+    padding: 5px;
+    background-color: transparent;
+    border: none;
+    color: #F5F5F5;
+}
+
+.actions > button:hover {
+    cursor: pointer;
+}
+ 
+.green > svg {
+    color: #28a745;
+}
+
+.red > svg {
+    color: #750909;
+}
+
+svg:hover {
+    opacity: 0.6;
+}
+
+main {
+    width: calc(100% - 75px);
+    margin-top: 80px;
+    margin-left: 75px;
+    position: absolute;
+}

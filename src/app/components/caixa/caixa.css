@@ -1,0 +1,314 @@
+section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.buys {
+    margin: 20px;
+    width: 100%;
+}
+
+.pesq {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: #F5F5F5;
+    position: relative;
+}
+
+input[type="text"] {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #888888;
+    background-color: #3C3C3C;
+    border-radius: 6px;
+    padding: 0 10px;
+    color: #F5F5F5;
+}
+
+.dropdown {
+    width: 100%;
+    max-height: 500px;
+    background-color: #3C3C3C;
+    font-weight: 300;
+    padding: 10px 10px;
+    position: absolute;
+    margin-top: 67px;
+    border: 1px solid #888888;
+    border-radius: 6px;
+    overflow: auto;
+}
+
+li {
+    list-style: none;
+    padding: 5px;
+    font-size: 0.9rem;
+}
+
+li:hover {
+    background-color: #766262;
+    color: #7AE77A;
+    cursor: pointer;
+}
+
+h2 {
+    color: #F5F5F5;
+    margin: 10px 0 5px 0;
+}
+
+.father {
+    height: calc(100% - 190px - 30px);
+}
+
+.list-itens-buy {
+    border: 1px solid #888888;
+    background-color: #3C3C3C;
+    border-radius: 6px;
+    padding: 15px;
+    color: #F5F5F5;
+    height: 100%;
+    overflow: hidden;
+}
+
+.scroll-area {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+table {
+    text-align: left;
+    width: 100%;
+    max-height: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    color: #888888;
+    font-weight: 700;
+    padding: 5px;
+}
+
+td {
+    padding: 5px;
+    font-weight: 300;
+}
+
+li.ativo  {
+    background-color: #766262;
+    color: #7AE77A;
+    cursor: pointer;
+}
+
+tr:focus {
+    background-color: #766262;
+    color: #a30c0c;
+    cursor: pointer;
+    outline: none;
+}
+
+.list-itens-buy > table {
+    width: 100%;
+    text-align: left;
+}
+
+.resum {
+    margin-top: 20px;
+    margin-right: 20px;
+    width: 450px;
+    height: calc(100vh - 120px - 30px);
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    color: #F5F5F5;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+h3 {
+    margin-bottom: 10px;
+}
+
+.d-resum > div {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+.d-action {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.d-action > button {
+    display: block;
+    width: 100%;
+    height: 45px;
+    border-radius: 6px;
+    border: none;
+    color: #f5f5f5;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.b-inferior {
+    position: fixed;
+    width: calc(100% - 75px);
+    height: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    bottom: 0;
+    background-color: #000000;
+    padding: 0 10px;
+}
+
+.b-inferior > button {
+    background-color: transparent;
+    border: none;
+    color: #f5f5f5;
+    padding: 0 20px;
+}
+
+.green {
+    background-color: #28a745;
+}
+
+.green:hover {
+    background-color: #218838;
+}
+
+.red {
+    background-color: #dc3545;
+}
+
+.red:hover {
+    background-color: #b52a37;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+main {
+    width: calc(100% - 75px);
+    margin-top: 80px;
+    margin-left: 75px;
+    position: fixed;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.modal-finalizar-venda {
+    width: 400px;
+}
+
+.modal-finalizar-venda div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.modal-finalizar-venda div > button {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    height: 35px;
+}
+
+.modal button {
+    width: 100%;
+    height: 45px;
+    border: none;
+    background-color: #F5F5F5;
+    color: #1e1e1e;
+    height: 45px;
+    border-radius: 6px;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.modal-cancelar > div {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.button-esc {
+    margin-top: 15px;
+}
+
+.modal-confirmar {
+    width: 400px;
+}
+
+.modal-confirmar div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 15px;
+}
+
+.modal-confirmar div > button {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    height: 35px;
+}
+
+.modal-confirmar p {
+    display: flex;
+    justify-content: space-between;
+}
+
+.li-dropdown {
+    display: flex;
+}
+
+.l1 {
+    width: 120px;
+    display: block;
+}
+
+.l2 {
+    display: block;
+    width: 50%;
+}
+
+.l3 {
+    width: 150px;
+    display: block;
+}
