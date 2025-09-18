@@ -61,8 +61,8 @@ export class Estoque implements OnInit {
 
   onRightClick(event: MouseEvent) {
     event.preventDefault() // impede o menu padrão do navegador
-    alert("Tudo puta")
-    // aqui você chama sua função
+    // alert("Tudo puta")
+    // // aqui você chama sua função
   }
 
 }
