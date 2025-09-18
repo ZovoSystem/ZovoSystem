@@ -12,6 +12,8 @@ import { Estoque } from './components/estoque/estoque';
 import { EstoqueProduto } from './components/estoque-produto/estoque-produto';
 import { EstoqueMovimentacao } from './components/estoque-movimentacao/estoque-movimentacao';
 
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+
 @NgModule({
   declarations: [
     App,
@@ -25,10 +27,12 @@ import { EstoqueMovimentacao } from './components/estoque-movimentacao/estoque-m
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxMaskDirective
   ],
   providers: [
-    provideBrowserGlobalErrorListeners()
+    provideBrowserGlobalErrorListeners(),
+    provideNgxMask({ /* opções de cfg */ })
   ],
   bootstrap: [App]
 })

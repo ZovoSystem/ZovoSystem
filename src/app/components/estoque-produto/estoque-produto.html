@@ -10,37 +10,52 @@
             <form #form="ngForm">
                 <fieldset>
                     <legend>Produto</legend>
+
                     <div class="form-group-flex">
                         <div class="form-group">
                             <label for="cod-barras">Código de Barras:</label>
-                            <input #inputFocado type="text" id="cod-barras" name="cod-barras" [(ngModel)]="produto.codigoBarras" maxlength="13">
+                            <input type="text" id="cod-barras" name="codigoBarras" [(ngModel)]="produto.codigoBarras"
+                                maxlength="13" inputmode="numeric" placeholder="0000000000000" pattern="[0-9]*"
+                                mask="0000000000000" #inputFocado />
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label for="nome">Nome do Produto:</label>
-                        <input type="text" id="nome" name="nome" [(ngModel)]="produto.nome" maxlength="120" required>
+                        <input type="text" id="nome" name="nome" [(ngModel)]="produto.nome" maxlength="120" required
+                            placeholder="Digite o nome do produto" />
                     </div>
+
                     <div class="form-group">
                         <label for="descricao">Descrição do Produto:</label>
-                        <textarea id="descricao" name="desc-produto" [(ngModel)]="produto.descricao" maxlength="250"></textarea>
+                        <textarea id="descricao" name="descricao" [(ngModel)]="produto.descricao" maxlength="250"
+                            placeholder="Descrição do produto"></textarea>
                     </div>
+
                     <div class="form-group-flex">
                         <div class="form-group">
-                            <label for="quantidade">Estoque Minimo:</label>
-                            <input type="number" id="quantidade" name="quantidade" [(ngModel)]="produto.quantidadeEstoqueMinimo" min="0">
+                            <label for="estoque-min">Estoque Mínimo:</label>
+                            <input type="number" id="estoque-min" name="quantidadeEstoqueMinimo"
+                                [(ngModel)]="produto.quantidadeEstoqueMinimo" min="0" mask="00000"
+                                placeholder="0" />
                         </div>
                     </div>
+
                     <div class="form-group-flex">
                         <div class="form-group">
-                            <label for="quantidade">Preço Venda:</label>
-                            <input type="number" id="quantidade" name="quantidade" [(ngModel)]="produto.valorVenda">
+                            <label for="valor-venda">Preço Venda:</label>
+                            <input type="text" id="valor-venda" name="valorVenda" [(ngModel)]="produto.valorVenda"
+                                mask="separator.2" prefix="R$ " thousandSeparator=" " decimalMarker=","
+                                inputmode="numeric" placeholder="R$ 0,00" />
                         </div>
                     </div>
+
                 </fieldset>
             </form>
+
             <div class="btns-group">
-                <button type="submit" class="red" [routerLink]="['/estoque']">Cancelar</button>
-                <button type="submit" class="green" (click)="chamaApi()">Salvar</button>
+                <button type="button" class="red" [routerLink]="['/estoque']">Cancelar</button>
+                <button type="button" class="green" (click)="chamaApi()">Salvar</button>
             </div>
         </main>
     </section>

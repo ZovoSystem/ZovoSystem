@@ -54,5 +54,16 @@ export class Estoque implements OnInit {
       }
     })
   }
+
+  zeraStorage() {
+    sessionStorage.clear()
+  }
+
+  onRightClick(event: MouseEvent) {
+    event.preventDefault() // impede o menu padrão do navegador
+    alert("Tudo puta")
+    // aqui você chama sua função
+  }
+
 }
 

@@ -2,6 +2,7 @@ import { EstoqueMovimentacaoService } from './estoque-movimentacao.service';
 import { EstoqueProduto } from './../estoque-produto/estoque-produto';
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-estoque-movimentacao',
@@ -25,8 +26,8 @@ export class EstoqueMovimentacao implements OnInit {
 
   movimentacao = {
     tipo: 0,
-    quantidade: 0,
-    precoCusto: 0,
+    quantidade: null,
+    precoCusto: null,
     observacao: ''
   }
 
@@ -55,7 +56,8 @@ export class EstoqueMovimentacao implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private estoqueMovimentacaoService: EstoqueMovimentacaoService
+    private estoqueMovimentacaoService: EstoqueMovimentacaoService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -103,9 +105,11 @@ export class EstoqueMovimentacao implements OnInit {
       .subscribe({
         next: (res) => {
           console.log('Produto criado com sucesso!')
+          this.router.navigate(['/estoque'])
         },
         error: (err) => {
-          console.warn('Erro ao atualizar:', err)
+          console.warn('Erro ao criar produto:', err)
+          alert("Erro ao criar produto!")
         }
       })
   }

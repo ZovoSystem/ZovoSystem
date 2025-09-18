@@ -16,12 +16,12 @@ export class EstoqueProduto implements OnInit, AfterViewInit {
   produtoId: string | null = null
 
   produto = {
-    codigoProduto: 0,
+    codigoProduto: null,
     codigoBarras: '',
     nome: '',
     descricao: '',
-    valorVenda: '',
-    quantidadeEstoqueMinimo: 0
+    quantidadeEstoqueMinimo: null,
+    valorVenda: null,
   }
 
   constructor(
@@ -31,7 +31,7 @@ export class EstoqueProduto implements OnInit, AfterViewInit {
   ) { }
 
   @ViewChild('inputFocado') inputFocado!: ElementRef<HTMLInputElement>
-  
+
   ngAfterViewInit() {
     this.focarInput() // garante foco assim que a view carregar
   }
@@ -50,16 +50,36 @@ export class EstoqueProduto implements OnInit, AfterViewInit {
           codigoBarras: string
           nome: string
           descricao: string
-          valorVenda: string
           quantidadeEstoqueMinimo: number
+          valorVenda: number
 
         }) => {
+          console.log(dados)
           this.produto = dados
+          console.log(this.produto)
         },
         error: (err) => {
           console.error('Erro ao buscar produto', err)
         }
       })
+    }
+
+    this.produtoId = this.route.snapshot.paramMap.get('id')
+    if (this.produtoId === 'null') {
+      const produtoString = sessionStorage.getItem('produtoTemp')
+
+      if (produtoString) {
+        const produtoStorage = JSON.parse(produtoString)
+
+        this.produto.codigoBarras = produtoStorage.codigoBarras
+        this.produto.nome = produtoStorage.nome
+        this.produto.descricao = produtoStorage.descricao
+        this.produto.quantidadeEstoqueMinimo = produtoStorage.quantidadeEstoqueMinimo
+        this.produto.valorVenda = produtoStorage.valorVenda
+
+      } else {
+        console.warn('Produto não encontrado no sessionStorage')
+      }
     }
   }
 
@@ -69,11 +89,11 @@ export class EstoqueProduto implements OnInit, AfterViewInit {
       this.produtoService.atualizarProduto(this.produto)
         .subscribe({
           next: (res) => {
-            console.log('Produto atualizado com sucesso:', res)
-            console.log('Objeto enviado:', this.produto)
+            this.router.navigate(['/estoque'])
           },
           error: (err) => {
             console.error('Erro ao atualizar:', err)
+            alert("Erro inesperado")
           }
         })
 
