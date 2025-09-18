@@ -17,6 +17,7 @@ export class EstoqueMovimentacaoService {
   }
 
   adicionarMovimentacao(codigoProduto: any, novaVenda: any): Observable<any> {
+    console.log(novaVenda)
     return this.http.post<any>(`${this.apiMovimentacaoUrl}/codigoproduto:${codigoProduto}`, novaVenda)
   }
 

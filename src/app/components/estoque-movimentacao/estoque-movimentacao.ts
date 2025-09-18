@@ -120,6 +120,7 @@ export class EstoqueMovimentacao implements OnInit {
     }
     if(this.modalAberto === 2) {
       this.movimentacao.tipo = 3
+      this.movimentacao.precoCusto = 0
     }
     
     this.estoqueMovimentacaoService.adicionarMovimentacao(this.produtoId, this.movimentacao)
