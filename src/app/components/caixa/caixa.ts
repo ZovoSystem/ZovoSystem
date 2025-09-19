@@ -348,6 +348,10 @@ export class Caixa implements AfterViewInit {
 
     switch (this.modalAberto) {
       case 0:
+        const tecla = event.key
+        if (tecla.length === 1 && /[0-9]/.test(tecla) || tecla.length === 1 && /[a-zA-Z]/.test(tecla)) {
+          this.ngAfterViewInit()
+        }
         if (event.key === 'F1') {
           if (this.itensVenda.length > 0) {
             this.modalAberto = 1
@@ -360,7 +364,6 @@ export class Caixa implements AfterViewInit {
         if (event.key === 'F2') this.modalAberto = 2
         if (event.key === 'F3') this.foco()
         if (event.key === 'F4') this.focarLinha(this.itensVenda.length - 1)
-        if (event.key === 'F5') this.ngAfterViewInit()
         if (event.key === 'F11') this.ngAfterViewInit()
         break
       case 1:
