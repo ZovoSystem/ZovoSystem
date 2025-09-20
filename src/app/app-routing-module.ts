@@ -6,6 +6,7 @@ import { Caixa } from './components/caixa/caixa';
 import { Estoque } from './components/estoque/estoque'
 import { EstoqueProduto } from './components/estoque-produto/estoque-produto';
 import { EstoqueMovimentacao } from './components/estoque-movimentacao/estoque-movimentacao';
+import { Vendas } from './components/vendas/vendas';
 
 const routes: Routes = [
   {
@@ -18,7 +19,8 @@ const routes: Routes = [
       { path: 'produto', component: EstoqueProduto },
       { path: 'produto/:id', component: EstoqueProduto },
       { path: 'movimentacao', component: EstoqueMovimentacao },
-      { path: 'movimentacao/:id', component: EstoqueMovimentacao }
+      { path: 'movimentacao/:id', component: EstoqueMovimentacao },
+      { path: 'vendas', component: Vendas }
     ]
   },
   { path: '**', redirectTo: 'caixa' }

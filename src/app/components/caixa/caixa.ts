@@ -20,11 +20,14 @@ export class Caixa implements AfterViewInit {
     this.inputSeachProducts.nativeElement.blur()
   }
 
+  inputFocado = false
+
   @ViewChild('inputValor') inputValor!: ElementRef<HTMLInputElement>
 
   @ViewChildren('qtd') qtds!: QueryList<ElementRef>
 
   foco(index?: number) {
+    this.inputFocado = true
     const arr = this.qtds.toArray()
     const el = index != null ? arr[index]?.nativeElement : arr[arr.length - 1]?.nativeElement
     if (el) {
@@ -349,7 +352,7 @@ export class Caixa implements AfterViewInit {
     switch (this.modalAberto) {
       case 0:
         const tecla = event.key
-        if (tecla.length === 1 && /[0-9]/.test(tecla) || tecla.length === 1 && /[a-zA-Z]/.test(tecla)) {
+        if ((tecla.length === 1 && /[0-9]/.test(tecla) || tecla.length === 1 && /[a-zA-Z]/.test(tecla)) && !this.inputFocado) {
           this.ngAfterViewInit()
         }
         if (event.key === 'F1') {

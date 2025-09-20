@@ -13,6 +13,7 @@ import { EstoqueProduto } from './components/estoque-produto/estoque-produto';
 import { EstoqueMovimentacao } from './components/estoque-movimentacao/estoque-movimentacao';
 
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { Vendas } from './components/vendas/vendas';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
     Caixa,
     Estoque,
     EstoqueProduto,
-    EstoqueMovimentacao
+    EstoqueMovimentacao,
+    Vendas
   ],
   imports: [
     BrowserModule,

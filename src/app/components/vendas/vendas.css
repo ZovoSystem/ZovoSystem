@@ -1,0 +1,116 @@
+main {
+    width: calc(100% - 75px);
+    min-height: calc(100vh - 80px);
+    margin-top: 80px;
+    margin-left: 75px;
+    position: absolute;
+    display: flex;
+}
+
+.acordion-faturamento {
+    min-width: 320px;
+    height: calc(100vh - 80px);
+    background-color: #3C3C3C;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    overflow: auto;   /* ou overflow: scroll */
+    scrollbar-width: none; /* Firefox */
+}
+
+.acordion-faturamento::-webkit-scrollbar {
+    display: none; /* Chrome, Safari e Edge */
+}
+
+.item-acordion .mes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px;
+    color: #f5f5f5;
+    background-color: #1e1e1e;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+}
+
+.item-acordion .dias {
+    display: none;
+}
+
+.item-acordion .dias.aberto {
+    display: block;
+}
+
+.item-acordion .dia {
+    padding: 15px 22px;
+    color: #f5f5f5;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.item-acordion .dia.aberto {
+    background-color: #76626269;
+    color: #c1ebc1;
+}
+
+.vendas {
+    min-width: 350px;
+    color: #f5f5f5;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.venda {
+    width: 100%;
+    height: fit-content;
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    
+}
+
+.venda.aberto {
+    background-color: #76626269;
+    color: #c1ebc1;
+}
+
+.venda > div,
+.resumo > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.div-buttons {
+    justify-content: right !important;
+    gap: 5px;
+    margin-top: 15px;
+}
+
+.div-buttons > button {
+    padding: 5px 20px;
+    border: none;
+    border-radius: 4px;
+}
+
+.detalhes {
+    width: 100%;
+    padding: 20px;
+}
+
+.resumo {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    color: #f5f5f5;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+}
+
+.div-table {
+    width: 100%;
+    padding: 20px;
+    color: #f5f5f5;
+    margin-top: 20px;
+    background-color: #3C3C3C;
+    border-radius: 10px;
+}
+
+.div-table table {
+    width: 100%;
+}
