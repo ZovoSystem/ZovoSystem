@@ -34,6 +34,8 @@
               <td *ngIf="movimentacao.tipo === 2" class="c2"><span>&darr; Venda</span></td>
               <td *ngIf="movimentacao.tipo === 3" class="c2"><span>&darr; Baixa Manual</span></td>
               <td *ngIf="movimentacao.tipo === 4" class="c1"><span>&uarr; Reposição Manual</span></td>
+              <td *ngIf="movimentacao.tipo === 5" class="c2"><span>&darr; Baixa Automatica</span></td>
+              <td *ngIf="movimentacao.tipo === 6" class="c1"><span>&uarr; Reposição Automatica</span></td>
 
               <td>{{ movimentacao.observacao }}</td>
             </tr>
